@@ -29,11 +29,13 @@ function OTPInput(props) {
             inputRef.current[index+1].focus();
         }
     }
-    const handleClick = () => {
-
+    const handleClick = (index) => {
+        inputRef.current[index].setSelectionRange(1,1);
     }
-    const handleKeyDown = () => {
-
+    const handleKeyDown = (index,e) => {
+        if (e.key === 'Backspace' && !otp[index] && index > 0 && inputRef.current[index - 1] ){
+            inputRef.current[index - 1].focus();
+        }
     }
     return (
         <div>
@@ -45,8 +47,8 @@ function OTPInput(props) {
                             value={value}
                             ref={(focusInput)=>(inputRef.current[index]=focusInput)}
                             onChange={(e) => handlechange(index, e)}
-                            onClick={handleClick}
-                            onKeyDown={handleKeyDown}
+                            onClick={(e) => handleClick(index)}
+                            onKeyDown={(e) => handleKeyDown(index, e)}
                             className={styles['OTP-Input']}
                         />
                     );
