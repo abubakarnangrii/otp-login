@@ -19,9 +19,6 @@ function PhoneOTPForm() {
         }
         setOtpSent(true);
     };
-    const onOptSubmit = (conbinedOTP) => {
-        console.log(conbinedOTP)
-    }
 
     return (
         <div>
@@ -35,7 +32,7 @@ function PhoneOTPForm() {
                 </form>) : (
                 <div>
                     <p>Enter OTP sent to {phoneNumber}</p>
-                    <OTPInput length={6} onOptSubmit={onOptSubmit} />
+                    <OTPInput length={6}  />
                 </div>)}
         </div>
     )
